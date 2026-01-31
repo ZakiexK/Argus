@@ -12,6 +12,7 @@ export default function Home() {
       difficulty: 'Beginner',
       status: 'available',
       href: '/basic-auth',
+      gradient: 'from-blue-500 to-cyan-500',
     },
     {
       title: 'Bearer Tokens',
@@ -21,6 +22,7 @@ export default function Home() {
       difficulty: 'Intermediate',
       status: 'coming-soon',
       href: '#',
+      gradient: 'from-purple-500 to-pink-500',
     },
     {
       title: 'JWT (JSON Web Tokens)',
@@ -30,68 +32,72 @@ export default function Home() {
       difficulty: 'Advanced',
       status: 'coming-soon',
       href: '#',
+      gradient: 'from-orange-500 to-red-500',
     },
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
+    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100">
       {/* Hero Section */}
       <div className="container mx-auto px-4 py-16">
         <div className="text-center mb-16">
-          <Badge className="mb-4" variant="outline">
+          <Badge className="mb-4 bg-gradient-to-r from-blue-600 to-cyan-600 text-white border-0">
             Interactive Cybersecurity Learning
           </Badge>
-          <h1 className="text-5xl font-bold text-white mb-4">
+          <h1 className="text-6xl font-bold bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900 bg-clip-text text-transparent mb-4">
             Argus Authentication Platform
           </h1>
-          <p className="text-xl text-slate-300 max-w-2xl mx-auto">
+          <p className="text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed">
             Master authentication security through hands-on learning and CTF challenges.
             Understand vulnerabilities, learn exploitation techniques, and build secure systems.
           </p>
         </div>
 
         {/* Modules Grid */}
-        <div className="grid md:grid-cols-3 gap-6 mb-16">
+        <div className="grid md:grid-cols-3 gap-8 mb-16">
           {modules.map((module) => (
             <Card
               key={module.title}
-              className={`bg-slate-800/50 border-slate-700 hover:border-slate-600 transition-all ${module.status === 'available' ? 'hover:shadow-lg hover:shadow-blue-500/20' : 'opacity-75'
+              className={`bg-white border-2 border-gray-200 hover:border-gray-300 transition-all hover:shadow-2xl ${module.status === 'available' ? 'hover:-translate-y-1' : 'opacity-75'
                 }`}
             >
               <CardHeader>
+                <div className={`h-2 w-full rounded-t-lg bg-gradient-to-r ${module.gradient} mb-4`} />
                 <div className="flex justify-between items-start mb-2">
-                  <CardTitle className="text-white">{module.title}</CardTitle>
+                  <CardTitle className="text-gray-900 text-xl">{module.title}</CardTitle>
                   {module.status === 'coming-soon' && (
-                    <Badge variant="secondary">Coming Soon</Badge>
+                    <Badge variant="outline" className="border-gray-300 text-gray-600">
+                      Coming Soon
+                    </Badge>
                   )}
                   {module.status === 'available' && (
-                    <Badge className="bg-green-500/20 text-green-400 border-green-500/50">
+                    <Badge className="bg-green-100 text-green-700 border-green-200 hover:bg-green-100">
                       Available
                     </Badge>
                   )}
                 </div>
-                <CardDescription className="text-slate-400">
+                <CardDescription className="text-gray-600 leading-relaxed">
                   {module.description}
                 </CardDescription>
               </CardHeader>
               <CardContent>
-                <div className="flex justify-between text-sm text-slate-400 mb-4">
-                  <span>{module.challenges} Challenges</span>
-                  <span>{module.points} Points</span>
+                <div className="flex justify-between text-sm text-gray-500 mb-4">
+                  <span className="font-medium">{module.challenges} Challenges</span>
+                  <span className="font-medium">{module.points} Points</span>
                 </div>
                 <div className="flex justify-between items-center">
-                  <Badge variant="outline" className="text-slate-300">
+                  <Badge variant="outline" className="border-gray-300 text-gray-700">
                     {module.difficulty}
                   </Badge>
                   {module.status === 'available' ? (
                     <Link
                       href={module.href}
-                      className="text-blue-400 hover:text-blue-300 font-medium"
+                      className={`font-semibold bg-gradient-to-r ${module.gradient} bg-clip-text text-transparent hover:opacity-80 transition-opacity`}
                     >
                       Start Learning →
                     </Link>
                   ) : (
-                    <span className="text-slate-500">Locked</span>
+                    <span className="text-gray-400 font-medium">Locked 🔒</span>
                   )}
                 </div>
               </CardContent>
@@ -100,25 +106,25 @@ export default function Home() {
         </div>
 
         {/* Features */}
-        <div className="grid md:grid-cols-3 gap-8 text-center">
-          <div>
-            <div className="text-4xl mb-3">📚</div>
-            <h3 className="text-lg font-semibold text-white mb-2">Interactive Learning</h3>
-            <p className="text-slate-400 text-sm">
+        <div className="grid md:grid-cols-3 gap-8">
+          <div className="bg-white rounded-xl p-8 text-center shadow-lg border-2 border-gray-200 hover:shadow-xl transition-shadow">
+            <div className="text-5xl mb-4">📚</div>
+            <h3 className="text-xl font-bold text-gray-900 mb-3">Interactive Learning</h3>
+            <p className="text-gray-600 leading-relaxed">
               Real-time demos and visualizations to understand auth mechanisms
             </p>
           </div>
-          <div>
-            <div className="text-4xl mb-3">🎯</div>
-            <h3 className="text-lg font-semibold text-white mb-2">CTF Challenges</h3>
-            <p className="text-slate-400 text-sm">
+          <div className="bg-white rounded-xl p-8 text-center shadow-lg border-2 border-gray-200 hover:shadow-xl transition-shadow">
+            <div className="text-5xl mb-4">🎯</div>
+            <h3 className="text-xl font-bold text-gray-900 mb-3">CTF Challenges</h3>
+            <p className="text-gray-600 leading-relaxed">
               Capture the flag challenges to test your skills
             </p>
           </div>
-          <div>
-            <div className="text-4xl mb-3">🛡️</div>
-            <h3 className="text-lg font-semibold text-white mb-2">Safe Environment</h3>
-            <p className="text-slate-400 text-sm">
+          <div className="bg-white rounded-xl p-8 text-center shadow-lg border-2 border-gray-200 hover:shadow-xl transition-shadow">
+            <div className="text-5xl mb-4">🛡️</div>
+            <h3 className="text-xl font-bold text-gray-900 mb-3">Safe Environment</h3>
+            <p className="text-gray-600 leading-relaxed">
               Intentionally vulnerable sandbox for ethical hacking practice
             </p>
           </div>
