@@ -1,0 +1,3 @@
+"""
+Argus Authentication Platform Backend
+"""
