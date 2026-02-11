@@ -46,3 +46,6 @@ coverage/
 # Production
 *.sqlite
 *.db
+
+stitch_learning_paths_dashboard/
+basic auth.md 
