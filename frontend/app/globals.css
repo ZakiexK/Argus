@@ -1,5 +1,16 @@
 @import "tailwindcss";
 
+/* Argus Color Palette */
+:root {
+  --argus-deep-purple: #402E7A;
+  --argus-medium-purple: #4C3BCF;
+  --argus-blue-purple: #4B70F5;
+  --argus-cyan-accent: #3DC2EC;
+  --argus-bg-dark: #141022;
+  --argus-sidebar-bg: #1e163d;
+  --argus-card-bg: #2E2360;
+}
+
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
